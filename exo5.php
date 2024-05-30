@@ -27,6 +27,8 @@ afficherInput($nomsInput);</p>
             </div>
 HTML;
     }    
+
+
     /**
      * createSubmitButton va créer un Button type Submit en string en HTML
      *
@@ -56,7 +58,11 @@ HTML;
         return "Bonjour $name ... $firstname $name ... Votre mission c'est bien passé à $city ?";
     }
 
+    
+
     createForm();
+
+
 
     if (isset($_POST['name']) & isset($_POST['firstname']) & isset($_POST['city'])) {
         $name=htmlentities($_POST['name']);
