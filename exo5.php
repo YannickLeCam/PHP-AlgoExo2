@@ -31,8 +31,18 @@ afficherInput($nomsInput);</p>
 
 <?php
 
+    function afficherInput($name,$firstname,$city){
+        return "Bonjour $name ... $firstname $name ... Votre mission c'est bien passé à $city ?";
+    }
+
+
     if (isset($_POST['name']) & isset($_POST['firstname']) & isset($_POST['city'])) {
-        
+        $name=htmlentities($_POST['name']);
+        $firstname=htmlentities($_POST['firstname']);
+        $city=htmlentities($_POST['city']);
+
+
+        echo afficherInput($name,$firstname,$city);
     }
 
 
