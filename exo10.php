@@ -92,8 +92,8 @@ HTML;
         $city = htmlentities($_GET['city']);
         $sexe = htmlentities($_GET['civilité']);
         $poste = htmlentities($_GET['poste']);
-        echo "Bonjour $name $firstname de sexe $sexe, étant à $city et on peut vous contacter sur $mail, vous occupez le poste de $poste ";
-        echo "Var_dump du tableau de createForm";
+        echo "Bonjour $name $firstname de sexe $sexe, étant à $city et on peut vous contacter sur $mail, vous occupez le poste de $poste <br>";
+        echo "Var_dump du tableau de createForm <br>";
         var_dump($tabAssiociatif);
     }
 
