@@ -15,7 +15,12 @@ CTRL + A / CTRL + C pour copier l'intégralité de la page de configuration
 Se rendre sur XDebug Wizard : https://xdebug.org/wizard
 Dans la zone de texte CTRL + V pour coller le texte précédemment copié</p>
 
-
+<p>Lien pour <a href="phpinfo.php">Phpinfo</a> </p>
+<p>Lien pour <a href="https://xdebug.org/wizard">Wizard</a> </p>
+<?php
+$tableauValeurs=[true,"texte",10,25.369,["valeur1","valeur2"]];
+var_dump($tableauValeurs)
+?>
 <?php
 require "elements/footer.php";
 ?>
