@@ -13,6 +13,33 @@ $capitales = ["France"=>"Paris","Allemagne"=>"Berlin",
 "USA"=>"Washington","Italie"=>"Rome","Espagne"=>"Madrid"];</p>
 
 
+<?php
+$capitales = 
+["France"=>"Paris","Allemagne"=>"Berlin","USA"=>"Washington","Italie"=>"Rome"];
+
+/**
+ * afficherTableHTML
+ *
+ * @param  mixed $capitales['Pays'=>'Capital']
+ * @return string HTML content
+ */
+function  afficherTableHTML(array $capitales):string{
+    ksort($capitales);
+    $retour = "<table class=\"table\"><tr> <th>Pays</th> <th>Capital</th> <th>Lien</th> </tr>";
+    foreach ($capitales as $Pays => $capitale) {
+        $retour = $retour . "<tr><td>$Pays</td><td>$capitale</td><td><a href=\"https://fr.wikipedia.org/wiki/$capitale\" target=\"_blank\">Lien</a></td></tr>";
+    }
+    $retour = $retour."</table>";
+    return $retour;
+}
+
+echo afficherTableHTML($capitales);
+
+
+
+?>
+
+
 
 <?php
 require "elements/footer.php";
