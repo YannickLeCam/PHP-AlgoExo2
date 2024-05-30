@@ -19,7 +19,6 @@ genererCheckbox($elements);
     * @return array prompt  avec CSS BS5
     */
    function genererCheckbox(array $elements):array{
-    sort($elements);
     $tab = [];
     $echo = "<form> <label>Entrer vos Elements :</label>"; // Midifier le label en fonction des besoins
     $echo = $echo . "<div style=\"display:flex\">";
