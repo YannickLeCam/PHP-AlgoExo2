@@ -26,7 +26,7 @@ afficherInput($nomsInput);</p>
                 <input type="text"class="form-control" name=$nameInput id="" aria-describedby="helpId" placeholder=""/>
             </div>
 HTML;
-    }    
+    }
 
 
     /**
@@ -45,9 +45,10 @@ HTML;
      */
     function createForm(){
         $retour = '<form action="" method="post"><div class="form-group">';
-        $retour .=createInput("name");
-        $retour .=createInput("firstname");
-        $retour .=createInput("city");
+        $tabInputTextName = ["name","firstname","city"];
+        foreach ($tabInputTextName as $name) {
+            $retour .=createInput($name);
+        }
         $retour .=createSubmitButton();
         $retour .= '</div></form>';
         echo $retour;

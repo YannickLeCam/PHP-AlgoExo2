@@ -32,6 +32,7 @@ de validation (submit).</p>
         echo $echo;
         return $tab;
     }
+  
     /**
      * createInput va créer un Input type Texte avec le Label en string en HTML et le name de l'input avec le nom fournit en appellant la fonction
      *
@@ -39,14 +40,14 @@ de validation (submit).</p>
      * @param  string $label si vide alors = nameInput
      * @return string
      */
-    function createInput(string $nameInput,string $label=null):string{
+    function createInput(string $nameInput,string $label=null , string $type):string{
         if($label==null){
             $label=$nameInput;
         }
         return <<<HTML
             <div class="mb-3">
                 <label for="" class="form-label">Entrer votre $label :</label>
-                <input type="text"class="form-control" name=$nameInput id="" aria-describedby="helpId" placeholder=""/>
+                <input type=$type class="form-control" name=$nameInput id="" aria-describedby="helpId" placeholder=""/>
             </div>
 HTML;
     }    
@@ -60,28 +61,49 @@ HTML;
     function createSubmitButton(){
         return '<button type="submit" class="btn btn-primary"> Envoyer </button>';
     }
+
     /**
      * createForm transmet un form en html
      *
      * @return array sera un tableau regroupant tout les tableau associatif pour récupérer les données voulue
      */
-    function createForm():array{
+    function createForm(array $tabForm):array{
         $tab=[];
         echo '<form action="" method="get" class="container"><div class="form-group">';
-        echo createInput("name","nom");
-        echo createInput("firstname","prénom");
-        echo createInput("city","ville");
-        echo createInput("mail","adresse mail");
-        $tab[]=alimenterListeDeroulante(["Monsieur","Madame","Mademoiselle","Autre"],"civilité");
-        $tab[]=alimenterListeDeroulante(["Développeur Logiciel","Designer web","Intégrateur","Chef de projet"],"poste");
-        echo createSubmitButton();
+        var_dump($tabForm);
+        foreach ($tabForm as $value) {
+            if ($value[0] == "Texte") {
+                echo createInput($value[1][0],$value[1][1],strtolower($value[0]));
+            }elseif ($value[0] == "ListeDeroulante") {
+                $tab[]=alimenterListeDeroulante($value[1][0],$value[1][1]);
+            }elseif ($value[0] == "Button") {
+                echo createSubmitButton();
+            }elseif($value[0] == "Date"){
+                echo createInput($value[1][0],$value[1][1],strtolower($value[0]));
+            }elseif ($value[0] == "Number") {
+                echo createInput($value[1][0],$value[1][1],strtolower($value[0]));
+            }elseif ($value[0] == "Email") {
+                echo createInput($value[1][0],$value[1][1],strtolower($value[0]));
+            }else {
+                var_dump($value);
+            }
+        }
         echo'</div></form>';
         return $tab;
-
     }
 
-
-    $tabAssiociatif=createForm();
+    $tabForm = [
+        ["Texte", ["name","nom"]],
+        ["Texte", ["firstname","prénom"]],
+        ["Texte", ["city","ville"]],
+        ["Email", ["mail","adresse mail"]],
+        ["Date", ["birthday","naissance"]],
+        ["Number", ["child","enfant"]],
+        ["ListeDeroulante", [["Monsieur","Madame","Mademoiselle","Autre"],"civilité"]],
+        ["ListeDeroulante", [["Développeur Logiciel","Designer web","Intégrateur","Chef de projet"],"poste"]],
+        ["Button", []]
+    ];
+    $tabAssiociatif=createForm($tabForm);
 
 
 
